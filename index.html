@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Random HTTP Status</title>
+<style>
+  body { font-family: sans-serif; text-align: center; margin-top: 3rem; background:#fafafa; }
+  #code { font-size: 4rem; font-weight: bold; margin: 2rem; color:#333; }
+  #desc { max-width: 300px; margin: 0 auto; line-height: 1.5; color:#555; }
+</style>
+</head>
+<body>
+<div id="code">--</div>
+<div id="desc"></div>
+<script>
+  const codes = [
+    {code: 100, desc: "Continue"},
+    {code: 200, desc: "OK"},
+    {code: 201, desc: "Created"},
+    {code: 301, desc: "Moved Permanently"},
+    {code: 302, desc: "Found"},
+    {code: 304, desc: "Not Modified"},
+    {code: 400, desc: "Bad Request"},
+    {code: 401, desc: "Unauthorized"},
+    {code: 403, desc: "Forbidden"},
+    {code: 404, desc: "Not Found"},
+    {code: 418, desc: "I'm a teapot"},
+    {code: 500, desc: "Internal Server Error"},
+    {code: 502, desc: "Bad Gateway"},
+    {code: 503, desc: "Service Unavailable"}
+  ];
+  function randomStatus() {
+    const idx = Math.floor(Math.random() * codes.length);
+    const {code, desc} = codes[idx];
+    document.getElementById('code').textContent = code;
+    document.getElementById('desc').textContent = desc;
+  }
+  randomStatus();
+  setInterval(randomStatus, 5000);
+</script>
+</body>
+</html>
